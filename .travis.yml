@@ -8,4 +8,4 @@ addons:
         packages:
         - libstdc++-4.8-dev
 install: true
-#script: make
+script: make
