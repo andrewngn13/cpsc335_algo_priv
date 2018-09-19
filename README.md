@@ -2,7 +2,4 @@
 Project 1: Implementing Algorithms
 
 Group members:
-
-Ada Lovelace adalovelace@csu.fullerton.edu
-
-Charles Babbage charlesbab@csu.fullerton.edu
+Andrew Nguyen andrewngn13@gmail.com
