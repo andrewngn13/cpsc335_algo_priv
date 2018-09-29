@@ -179,7 +179,7 @@ sorted_disks sort_left_to_right(const disk_state& before) {
 	disk_state before_2 = before;
 	int disk_swaps = 0;
 	for (unsigned int a = 0; a < before_2.total_count(); a++) {
-		for (unsigned int b = a; b < before_2.total_count()-1; b++) {
+		for (unsigned int b = 0; b < before_2.total_count()-1; b++) {
 			//swap dark disks rightwards and dont swap if both DISK_DARK
 			if (before_2.get(b) == DISK_DARK && before_2.get(b+1) == DISK_LIGHT) {
 				before_2.swap(b);
