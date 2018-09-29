@@ -135,12 +135,12 @@ public:
   // on the left (low indices) and all dark disks on the right (high
   // indices).
   bool is_sorted() const {
-	for (int i = 0; i < light_count(); i++)
+	for (unsigned int i = 0; i < light_count(); i++)
 	{
 		if (get(i) == DISK_DARK)
 			return false;
 	}
-	for (int i = light_count(); i < total_count(); i++)
+	for (unsigned int i = light_count(); i < total_count(); i++)
 	{
 		if (get(i) == DISK_LIGHT)
 			return false;
@@ -178,8 +178,8 @@ public:
 sorted_disks sort_left_to_right(const disk_state& before) {
 	disk_state before_2 = before;
 	int disk_swaps = 0;
-	for (int a = 0; a < before_2.total_count(); a++) {
-		for (int b = a; b < before_2.total_count()-1; b++) {
+	for (unsigned int a = 0; a < before_2.total_count(); a++) {
+		for (unsigned int b = a; b < before_2.total_count()-1; b++) {
 			//swap dark disks rightwards and dont swap if both DISK_DARK
 			if (before_2.get(b) == DISK_DARK && before_2.get(b+1) == DISK_LIGHT) {
 				before_2.swap(b);
@@ -195,8 +195,8 @@ sorted_disks sort_left_to_right(const disk_state& before) {
 sorted_disks sort_lawnmower(const disk_state& before) {
 	disk_state before_2 = before;
 	int disk_swaps = 0;
-	for (int a = 0; a < before_2.total_count(); a++) {
-		for (int b = before_2.total_count()-1; b > a; b--) {
+	for (unsigned int a = 0; a < before_2.total_count(); a++) {
+		for (unsigned int b = before_2.total_count()-1; b > a; b--) {
 			//swap dark disks rightwards and dont swap if both DISK_DARK
 			if (before_2.get(b) == DISK_LIGHT && before_2.get(b-1) == DISK_DARK) {
 				before_2.swap(b-1);
