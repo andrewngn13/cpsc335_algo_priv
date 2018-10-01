@@ -195,15 +195,28 @@ sorted_disks sort_left_to_right(const disk_state& before) {
 sorted_disks sort_lawnmower(const disk_state& before) {
 	disk_state before_2 = before;
 	int disk_swaps = 0;
-	for (unsigned int a = 0; a < before_2.total_count(); a++) {
-		for (unsigned int b = before_2.total_count()-1; b > a; b--) {
-			//swap dark disks rightwards and dont swap if both DISK_DARK
+	//create 3 index variables a, b, c
+	// a = leftmost index for iteration
+	// b = current index of iteration
+	// c = rightmost index for iteration
+	//go from leftmost to rightmost and increase/decrease starting/ending index each time
+	for (unsigned int a = 0, c = before_2.total_count(); a < c; a++) {
+		//start at leftmost index and swap towards rightmost
+		for (unsigned int b = a; b < c-1; b++) {
+			if (before_2.get(b) == DISK_DARK && before_2.get(b + 1) == DISK_LIGHT) {
+				before_2.swap(b);
+				disk_swaps++;
+			}
+		}
+		// decrease rightmost index
+		c--;
+		//start at rightmost index and go to leftmost swapping towards the right 
+		for (unsigned int b = c-1; b > a; b--) {
 			if (before_2.get(b) == DISK_LIGHT && before_2.get(b-1) == DISK_DARK) {
 				before_2.swap(b-1);
 				disk_swaps++;
 			}
 		}
 	}
-
 	return sorted_disks(before_2, disk_swaps);
 }
